@@ -69,13 +69,6 @@ body {
     margin-top: 10px;
 }
 
-.cloud {
-    position: absolute;
-    background-color: white;
-    border-radius: 50px;
-    opacity: 0.8;
-}
-
 #mobile-controls {
     position: absolute;
     bottom: 20px;
