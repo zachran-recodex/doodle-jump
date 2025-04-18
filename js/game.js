@@ -217,6 +217,39 @@ document.addEventListener('DOMContentLoaded', () => {
             cancelAnimationFrame(animationFrameId);
             animationFrameId = null;
         }
+        
+        // Show prompt to save score
+        if (score > 0) {
+            const playerName = prompt('Game Over! Enter your name to save your score:');
+            if (playerName) {
+                saveScore(playerName, score);
+            }
+        }
+    }
+    
+    // Function to save score to database
+    function saveScore(playerName, score) {
+        fetch('php/save_score.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                player_name: playerName,
+                score: score
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Score saved successfully!');
+            } else {
+                console.error('Error saving score:', data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error saving score:', error);
+        });
     }
     
     function gameLoop() {
