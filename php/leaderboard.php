@@ -104,7 +104,7 @@ try {
 </head>
 <body>
     <div class="leaderboard-container">
-        <h1>Doodle Jump Leaderboard</h1>
+        <h1>Leaderboard</h1>
         
         <?php if(isset($error)): ?>
             <p style="color: red;"><?php echo $error; ?></p>
@@ -115,7 +115,6 @@ try {
                         <th>Rank</th>
                         <th>Player</th>
                         <th>Score</th>
-                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,7 +129,6 @@ try {
                                 <td><?php echo $rank++; ?></td>
                                 <td><?php echo htmlspecialchars($row['player_name']); ?></td>
                                 <td><?php echo number_format($row['score']); ?></td>
-                                <td><?php echo date('Y-m-d', strtotime($row['date_created'])); ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>

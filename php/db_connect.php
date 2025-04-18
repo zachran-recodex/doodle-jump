@@ -1,6 +1,6 @@
 <?php
 // Database connection parameters
-$host = 'localhost';
+$host = '127.0.0.1';
 $dbname = 'doodle_jump';
 $username = 'root';
 $password = '';
