@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileControls = document.getElementById('mobile-controls');
     const leftBtn = document.getElementById('left-btn');
     const rightBtn = document.getElementById('right-btn');
+    const startScreen = document.getElementById('start-screen');
+    const startBtn = document.getElementById('start-btn');
     
     // Game constants
     const gameWidth = gameContainer.clientWidth;
@@ -264,6 +266,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Keyboard controls
     document.addEventListener('keydown', (e) => {
+        if (!gameRunning && startScreen.style.display !== 'none') return;
+        
         if (e.key === 'ArrowLeft') {
             movingLeft = true;
         } else if (e.key === 'ArrowRight') {
@@ -328,6 +332,14 @@ document.addEventListener('DOMContentLoaded', () => {
         init();
     });
     
-    // Initialize the game
-    init();
+    // Start game when start button is clicked
+    startBtn.addEventListener('click', () => {
+        startScreen.style.display = 'none';
+        init();
+    });
+    
+    // Restart game when restart button is clicked
+    restartBtn.addEventListener('click', () => {
+        init();
+    });
 });
